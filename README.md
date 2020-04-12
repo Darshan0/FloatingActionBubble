@@ -4,7 +4,7 @@
 [![Codemagic build status](https://api.codemagic.io/apps/5e9371f31838ac3981fd1397/5e9371f31838ac3981fd1396/status_badge.svg)](https://codemagic.io/apps/5e9371f31838ac3981fd1397/5e9371f31838ac3981fd1396/latest_build)
 
 
-### A Flutter package to create a nice menu using a Floating Action Button.
+A Flutter package to create a animated menu using a Floating Action Button.
 
 
 ![Showcase](https://imgur.com/IbinJsI.gif)
