@@ -3,7 +3,7 @@
 A Flutter package to create a nice menu using a Floating Action Button.
 
 
-![Showcase](https://imgur.com/a/VbZV7If)
+![Showcase](https://imgur.com/IbinJsI.gif)
 
 ## Installation
 
