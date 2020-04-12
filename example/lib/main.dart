@@ -1,6 +1,5 @@
 import 'package:floating_action_bubble/floating_action_bubble.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/scheduler/ticker.dart';
 
 void main() => runApp(MyApp());
 
@@ -53,18 +52,28 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         title: Text(widget.title),
       ),
       
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       
       //Init Floating Action Bubble 
       floatingActionButton: FloatingActionBubble(
         // Menu items
         items: <Bubble>[          
           Bubble(
-            "Home",
-            Colors.white,
-            Colors.black,
-            Icons.home,
-            TextStyle(fontSize: 16 , color: Colors.white),
+            title:"asa",
+            iconColor :Colors.white,
+            bubbleColor : Colors.indigo,
+            icon:Icons.home,
+            titleStyle:TextStyle(fontSize: 16 , color: Colors.white),
+            onPress: () {
+              _animationController.reverse();
+            },
+          ),
+          Bubble(
+            title:"Home",
+            iconColor :Colors.white,
+            bubbleColor : Colors.indigo,
+            icon:Icons.home,
+            titleStyle:TextStyle(fontSize: 16 , color: Colors.white),
             onPress: () {
               _animationController.reverse();
             },
@@ -78,6 +87,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         onPress: _animationController.isCompleted
             ? _animationController.reverse
             : _animationController.forward,
+        
+        // Floating Action button Icon color
+        iconColor: Colors.blue,
+
+        // Flaoting Action button Icon 
+        icon: AnimatedIcons.add_event,
       )
     );
   }

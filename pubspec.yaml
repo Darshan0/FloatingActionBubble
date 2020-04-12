@@ -1,6 +1,6 @@
 name: floating_action_bubble
-description: A new Flutter package project.
-version: 1.0.0
+description: A animated floating action menu ,the looks and animation of the floating action menu is totally customisable .
+version: 1.0.4
 author: Darshan M <darshanm806@gmail.com>
 homepage: https://github.com/Darshan0/floating_action_bubble
 

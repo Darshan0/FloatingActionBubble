@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Bubble {
-  const Bubble({this.title, this.iconColor , this.bubbleColor ,this.icon, this.titleStyle , this.onPress});
+  const Bubble(
+      {@required this.title,
+      @required this.titleStyle,
+      @required this.iconColor,
+      @required this.bubbleColor,
+      @required this.icon,
+      @required this.onPress});
 
   final IconData icon;
   final Color iconColor;
@@ -19,28 +25,29 @@ class BubbleMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      
       shape: StadiumBorder(),
       padding: EdgeInsets.only(top: 11, bottom: 13, left: 32, right: 32),
-      color: item.bubbleColor != null ? item.bubbleColor : Colors.indigo,
+      color: item.bubbleColor,
       splashColor: Colors.grey.withOpacity(0.1),
       highlightColor: Colors.grey.withOpacity(0.1),
-      elevation: 0,
+      elevation: 2,
       highlightElevation: 2,
-      disabledColor: item.bubbleColor != null ? item.bubbleColor : Colors.indigo,
+      disabledColor: item.bubbleColor,
       onPressed: item.onPress,
       child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          Visibility(
-            visible: item.icon != null ? true : false,
-            child: Icon(
-              item.icon,
-              color: item.iconColor !=null ? item.iconColor : Colors.white,
-            ),
+          Icon(
+            item.icon,
+            color: item.iconColor,
           ),
-          Text(item.title ,style: item.titleStyle != null ? item.titleStyle : TextStyle(color: Colors.white , fontSize: 16.0),),
+          SizedBox(
+            width: 8.0,
+          ),
+          Text(
+            item.title,
+            style: item.titleStyle,
+          ),
         ],
       ),
     );
@@ -50,14 +57,16 @@ class BubbleMenu extends StatelessWidget {
 class FloatingActionBubble extends AnimatedWidget {
   const FloatingActionBubble({
     @required this.items,
-    this.onPress,
-    this.icon,
-    Animation animation,
+    @required this.onPress,
+    @required this.icon,
+    @required this.iconColor,
+    @required Animation animation,
   }) : super(listenable: animation);
 
   final List<Bubble> items;
   final Function onPress;
-  final AnimatedIcons icon;
+  final AnimatedIconData icon;
+  final Color iconColor;
 
   get _animation => listenable;
 
@@ -65,7 +74,8 @@ class FloatingActionBubble extends AnimatedWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     final transform = Matrix4.translationValues(
-      -(screenWidth - _animation.value * screenWidth) * ((items.length - index) / 4),
+      -(screenWidth - _animation.value * screenWidth) *
+          ((items.length - index) / 4),
       0.0,
       0.0,
     );
@@ -84,7 +94,6 @@ class FloatingActionBubble extends AnimatedWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -94,21 +103,20 @@ class FloatingActionBubble extends AnimatedWidget {
           child: ListView.separated(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            separatorBuilder: (_, __) => SizedBox(height:12.0),
+            separatorBuilder: (_, __) => SizedBox(height: 12.0),
             padding: EdgeInsets.symmetric(vertical: 12),
             itemCount: items.length,
             itemBuilder: buildItem,
           ),
         ),
-        
         FloatingActionButton(
-        backgroundColor: Colors.indigo,
+          backgroundColor: iconColor,
           child: AnimatedIcon(
-            icon: icon != null ? icon : AnimatedIcons.menu_close,
+            icon: icon ,
             progress: _animation,
           ),
           onPressed: onPress,
-        ),    
+        ),
       ],
     );
   }
