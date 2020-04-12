@@ -2,7 +2,9 @@
 [![Pub](https://img.shields.io/pub/v/fab_circular_menu.svg)](https://pub.dev/packages/floating_action_bubble)
 [![Pull Requests are welcome](https://img.shields.io/badge/license-MIT-blue)](https://github.com/marianocordoba/fab-circular-menu/blob/master/LICENSE)
 [![Codemagic build status](https://api.codemagic.io/apps/5e9371f31838ac3981fd1397/5e9371f31838ac3981fd1396/status_badge.svg)](https://codemagic.io/apps/5e9371f31838ac3981fd1397/5e9371f31838ac3981fd1396/latest_build)
-A Flutter package to create a nice menu using a Floating Action Button.
+
+
+### A Flutter package to create a nice menu using a Floating Action Button.
 
 
 ![Showcase](https://imgur.com/IbinJsI.gif)
