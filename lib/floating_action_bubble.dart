@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Bubble {
-  const Bubble(this.title, this.iconColor , this.bubbleColor ,this.icon, this.titleStyle , {this.onPress});
+  const Bubble({this.title, this.iconColor , this.bubbleColor ,this.icon, this.titleStyle , this.onPress});
 
   final IconData icon;
   final Color iconColor;
@@ -31,6 +31,7 @@ class BubbleMenu extends StatelessWidget {
       onPressed: item.onPress,
       child: Row(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Visibility(
             visible: item.icon != null ? true : false,
@@ -38,9 +39,6 @@ class BubbleMenu extends StatelessWidget {
               item.icon,
               color: item.iconColor !=null ? item.iconColor : Colors.white,
             ),
-          ),
-          SizedBox(
-            width: 4.0,
           ),
           Text(item.title ,style: item.titleStyle != null ? item.titleStyle : TextStyle(color: Colors.white , fontSize: 16.0),),
         ],

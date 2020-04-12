@@ -1,8 +1,8 @@
 name: floating_action_bubble
 description: A new Flutter package project.
-version: 0.0.1
-author:
-homepage:
+version: 1.0.0
+author: Darshan M <darshanm806@gmail.com>
+homepage: https://github.com/Darshan0/floating_action_bubble
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
