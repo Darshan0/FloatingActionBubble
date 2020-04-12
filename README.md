@@ -1,7 +1,4 @@
 # FLOATING ACTION BUBBLE 
-[![Pub](https://img.shields.io/pub/v/fab_circular_menu.svg)](https://pub.dev/packages/fab_circular_menu)
-[![Pull Requests are welcome](https://img.shields.io/badge/license-MIT-blue)](https://github.com/marianocordoba/fab-circular-menu/blob/master/LICENSE)
-[![Codemagic build status](https://api.codemagic.io/apps/5cf6ad31434563000a9534d5/5cf6ad31434563000a9534d4/status_badge.svg)](https://codemagic.io/apps/5cf6ad31434563000a9534d5/5cf6ad31434563000a9534d4/latest_build)
 
 A Flutter package to create a nice menu using a Floating Action Button.
 
@@ -14,7 +11,7 @@ Just add `floating_action_bubble` to your [pubspec.yml](https://flutter.io/using
 
 ```yml
 dependencies:
-  floating_action_bubble: ^1.0.0
+  floating_action_bubble: 0.0.1
 ```
 
 ## Example
@@ -42,7 +39,7 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-You can check for a more complete example in the [example](https://github.com/marianocordoba/fab-circular-menu/tree/master/example) directory.
+You can check for a more complete example in the [example](https://github.com/Darshan0/floating_action_bubble/master/example) directory.
 
 ## Customize
 
