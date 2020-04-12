@@ -17,25 +17,93 @@ dependencies:
 ## Example
 
 ```dart
-class MyApp extends StatelessWidget {
+class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin{
+
+  Animation<double> _animation;
+  AnimationController _animationController;
+
+  @override
+  void initState(){
+        
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 260),
+    );
+
+    final curvedAnimation = CurvedAnimation(curve: Curves.easeInOut, parent: _animationController);
+    _animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
+    
+    super.initState();
+
+
+  }
+  
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Placeholder(),
-        floatingActionButton: FabCircularMenu(
-          children: <Widget>[
-            IconButton(icon: Icon(Icons.home), onPressed: () {
-              print('Home');
-            }),
-            IconButton(icon: Icon(Icons.favorite), onPressed: () {
-              print('Favorite');
-            })
-          ]
-        )
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      
+      //Init Floating Action Bubble 
+      floatingActionButton: FloatingActionBubble(
+        // Menu items
+        items: <Bubble>[
+
+          // Floating action menu item
+          Bubble(
+            title:"Settings",
+            iconColor :Colors.white,
+            bubbleColor : Colors.blue,
+            icon:Icons.settings,
+            titleStyle:TextStyle(fontSize: 16 , color: Colors.white),
+            onPress: () {
+              _animationController.reverse();
+            },
+          ),
+          // Floating action menu item
+          Bubble(
+            title:"Profile",
+            iconColor :Colors.white,
+            bubbleColor : Colors.blue,
+            icon:Icons.people,
+            titleStyle:TextStyle(fontSize: 16 , color: Colors.white),
+            onPress: () {
+              _animationController.reverse();
+            },
+          ),
+          //Floating action menu item
+          Bubble(
+            title:"Home",
+            iconColor :Colors.white,
+            bubbleColor : Colors.blue,
+            icon:Icons.home,
+            titleStyle:TextStyle(fontSize: 16 , color: Colors.white),
+            onPress: () {
+              _animationController.reverse();
+            },
+          ),
+        ],
+
+        // animation controller
+        animation: _animation,
+
+        // On pressed change animation state
+        onPress: _animationController.isCompleted
+            ? _animationController.reverse
+            : _animationController.forward,
+        
+        // Floating Action button Icon color
+        iconColor: Colors.blue,
+
+        // Flaoting Action button Icon 
+        icon: AnimatedIcons.add_event,
       )
     );
   }
+
 }
 ```
 
@@ -45,23 +113,16 @@ You can check for a more complete example in the [example](https://github.com/Da
 
 You can customize the widget appareance using the following properties:
 
-| Property  | Description | Default |
-|----------|-------------|---------|
-| alignment | Sets the widget alignment | `Alignment.bottomRight` |
-| ringColor | Sets the ring color | `accentColor` |
-| ringDiameter | Sets de ring diameter | `screenWidth * 1.25` (portrait) <br> `screenHeight * 1.25` (landscape) |
-| ringWidth | Sets the ring width | `ringDiameter * 0.3` |
-| fabSize | Sets the FAB size | `64.0` |
-| fabElevation | Sets the elevation for the FAB | `8.0` |
-| fabColor | Sets the FAB color | `primaryColor` |
-| fabOpenColor | Sets the FAB color while the menu is open. This property takes precedence over `fabColor` | - |
-| fabCloseColor | Sets the FAB color while the menu is closed. This property takes precedence over `fabColor` | - |
-| fabOpenIcon | Sets the FAB icon while the menu is open | `Icon(Icons.menu)` |
-| fabCloseIcon | Sets the FAB icon while the menu is closed | `Icon(Icons.close)` |
-| fabMargin | Sets the widget margin | `EdgeInsets.all(16.0)` |
-| animationDuration | Changes the animation duration | `Duration(milliseconds: 800)` |
-| animationCurve | Allows you to modify de animation curve | `Curves.easeInOutCirc` |
-| onDisplayChange | This callback is called every time the menu is opened or closed, passing the current state as a parameter. | - |
+| Property  | Description |
+|----------|-------------|
+| fabColor | Sets the FAB color |
+| fabIcon | Sets the FAB icon while the menu is open |
+| BubbleTitle | Sets the FAB icon while the menu is closed |
+| BubbleTitleStyle | Sets the FAB icon while the menu is closed |
+| BubbleIcon | Sets the FAB icon while the menu is closed |
+| BubbleIconColor | Sets the FAB icon while the menu is closed |
+| BubbleColor | Sets the FAB icon while the menu is closed |
+| animation| Allows you to modify the animation curve |
 
 
 
