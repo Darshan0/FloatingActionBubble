@@ -1,4 +1,4 @@
-# FLOATING ACTION BUBBLE 
+# Floating Action Bubble 
 
 A Flutter package to create a nice menu using a Floating Action Button.
 
