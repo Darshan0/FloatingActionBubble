@@ -52,26 +52,40 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         title: Text(widget.title),
       ),
       
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       
       //Init Floating Action Bubble 
       floatingActionButton: FloatingActionBubble(
         // Menu items
-        items: <Bubble>[          
+        items: <Bubble>[
+
+          // Floating action menu item
           Bubble(
-            title:"asa",
+            title:"Settings",
             iconColor :Colors.white,
-            bubbleColor : Colors.indigo,
-            icon:Icons.home,
+            bubbleColor : Colors.blue,
+            icon:Icons.settings,
             titleStyle:TextStyle(fontSize: 16 , color: Colors.white),
             onPress: () {
               _animationController.reverse();
             },
           ),
+          // Floating action menu item
+          Bubble(
+            title:"Profile",
+            iconColor :Colors.white,
+            bubbleColor : Colors.blue,
+            icon:Icons.people,
+            titleStyle:TextStyle(fontSize: 16 , color: Colors.white),
+            onPress: () {
+              _animationController.reverse();
+            },
+          ),
+          //Floating action menu item
           Bubble(
             title:"Home",
             iconColor :Colors.white,
-            bubbleColor : Colors.indigo,
+            bubbleColor : Colors.blue,
             icon:Icons.home,
             titleStyle:TextStyle(fontSize: 16 , color: Colors.white),
             onPress: () {

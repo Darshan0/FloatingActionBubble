@@ -35,14 +35,14 @@ class BubbleMenu extends StatelessWidget {
       disabledColor: item.bubbleColor,
       onPressed: item.onPress,
       child: Row(
-        mainAxisSize: MainAxisSize.max,
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Icon(
             item.icon,
             color: item.iconColor,
           ),
           SizedBox(
-            width: 8.0,
+            width: 10.0,
           ),
           Text(
             item.title,
