@@ -112,7 +112,7 @@ class FloatingActionBubble extends AnimatedWidget {
         FloatingActionButton(
           backgroundColor: iconColor,
           child: AnimatedIcon(
-            icon: icon ,
+            icon: icon,
             progress: _animation,
           ),
           onPressed: onPress,

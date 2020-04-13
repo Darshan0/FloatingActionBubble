@@ -1,6 +1,6 @@
 name: floating_action_bubble
-description: A animated menu using a floating action button.
-version: 1.0.6
+description: A animated menu using a floating action button , the aesthetic of the menu items are fully customisable 
+version: 1.0.9
 homepage: https://github.com/Darshan0/floating_action_bubble
 
 environment:

@@ -15,7 +15,7 @@ Just add `floating_action_bubble` to your [pubspec.yml](https://flutter.io/using
 
 ```yml
 dependencies:
-  floating_action_bubble: 0.0.1
+  floating_action_bubble: 1.0.9
 ```
 
 ## Example
@@ -120,16 +120,16 @@ You can customize the widget appareance using the following properties:
 | Property  | Description |
 |----------|-------------|
 | fabColor | Sets the FAB color |
-| fabIcon | Sets the FAB icon while the menu is open |
-| BubbleTitle | Sets the FAB icon while the menu is closed |
-| BubbleTitleStyle | Sets the FAB icon while the menu is closed |
-| BubbleIcon | Sets the FAB icon while the menu is closed |
-| BubbleIconColor | Sets the FAB icon while the menu is closed |
-| BubbleColor | Sets the FAB icon while the menu is closed |
-| animation| Allows you to modify the animation curve |
+| fabIcon | Sets the FAB icon |
+| BubbleTitle | Sets the menu item title |
+| BubbleTitleStyle | Sets the menu item title style |
+| BubbleIcon | Sets the menu  item icon |
+| BubbleIconColor | Sets the menu item icon color |
+| BubbleColor | Sets the menu item color |
+| animation| Allows to animated the menu items |
 
 
 
 ## Contributing
 
-I will be very happy if you contribute to this project, please submit a PR 😁
+If you want to contribute to this project, please submit a PR 😁

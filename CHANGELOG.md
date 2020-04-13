@@ -28,5 +28,20 @@
 
 ## [1.0.6] - 12/4/2020.
 
-* Update Example and Readme
+* Updated Example and Readme
 
+## [1.0.7] - 12/4/2020.
+
+* Updated Plugin Description
+
+## [1.0.8] - 12/4/2020.
+
+* Formated lib 
+
+## [1.0.9] - 12/4/2020.
+
+* Bug Fixes
+
+## [1.1.0] - 12/4/2020.
+
+* Bug Fixes
