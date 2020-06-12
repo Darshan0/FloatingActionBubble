@@ -98,9 +98,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         animation: _animation,
 
         // On pressed change animation state
-        onPress: _animationController.isCompleted
-            ? _animationController.reverse
-            : _animationController.forward,
+        onPress: () => _animationController.isCompleted
+              ? _animationController.reverse()
+              : _animationController.forward(),
         
         // Floating Action button Icon color
         iconColor: Colors.blue,
