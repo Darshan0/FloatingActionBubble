@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class Bubble {
   const Bubble(
       {@required this.title,
-      @required this.titleStyle,
-      @required this.iconColor,
-      @required this.bubbleColor,
-      @required this.icon,
-      @required this.onPress});
+        @required this.titleStyle,
+        @required this.iconColor,
+        @required this.bubbleColor,
+        @required this.icon,
+        @required this.onPress});
 
   final IconData icon;
   final Color iconColor;
@@ -58,15 +58,20 @@ class FloatingActionBubble extends AnimatedWidget {
   const FloatingActionBubble({
     @required this.items,
     @required this.onPress,
-    @required this.icon,
     @required this.iconColor,
+    @required this.backGroundColor,
     @required Animation animation,
-  }) : super(listenable: animation);
+    this.iconData,
+    this.animatedIconData,
+  }) : assert((iconData == null && animatedIconData != null) || (iconData != null && animatedIconData == null)),
+        super(listenable: animation);
 
   final List<Bubble> items;
   final Function onPress;
-  final AnimatedIconData icon;
+  final AnimatedIconData animatedIconData;
+  final IconData iconData;
   final Color iconColor;
+  final Color backGroundColor;
 
   get _animation => listenable;
 
@@ -110,10 +115,17 @@ class FloatingActionBubble extends AnimatedWidget {
           ),
         ),
         FloatingActionButton(
-          backgroundColor: iconColor,
-          child: AnimatedIcon(
-            icon: icon,
+          backgroundColor: backGroundColor,
+          // iconData is mutually exclusive with animatedIconData
+          // only 1 can be null at the time
+          child: iconData == null
+              ? AnimatedIcon(
+            icon: animatedIconData,
             progress: _animation,
+          )
+              : Icon(
+            iconData,
+            color: iconColor,
           ),
           onPressed: onPress,
         ),
