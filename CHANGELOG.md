@@ -45,3 +45,8 @@
 ## [1.1.0] - 13/4/2020.
 
 * Bug Fixes
+
+## [1.1.1] - 21/6/2020
+
+* Support for both Icons and Animated Icons
+* Added Herotag 

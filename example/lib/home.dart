@@ -1,33 +1,20 @@
-import 'package:example/home.dart';
 import 'package:floating_action_bubble/floating_action_bubble.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
+class Homepage extends StatefulWidget{
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Floating Action Bubble Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Floating Action Bubble Demo'),
-    );
+  HomepageState createState() {
+    return HomepageState();
   }
+  
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+class HomepageState extends State<Homepage> with SingleTickerProviderStateMixin{
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin{
 
-  Animation<double> _animation;
+    Animation<double> _animation;
   AnimationController _animationController;
 
   @override
@@ -50,10 +37,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("HeroTag Example"),
       ),
-      
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+
+            floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       
       //Init Floating Action Bubble 
       floatingActionButton: FloatingActionBubble(
@@ -90,7 +77,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             icon:Icons.home,
             titleStyle:TextStyle(fontSize: 16 , color: Colors.white),
             onPress: () {
-              Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => Homepage()));
               _animationController.reverse();
             },
           ),
@@ -111,7 +97,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         iconData: Icons.ac_unit, 
         backGroundColor: Colors.white,
       )
+
+
     );
   }
 
+  
 }

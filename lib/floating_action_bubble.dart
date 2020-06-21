@@ -54,6 +54,12 @@ class BubbleMenu extends StatelessWidget {
   }
 }
 
+class _DefaultHeroTag {
+  const _DefaultHeroTag();
+  @override
+  String toString() => '<default FloatingActionBubble tag>';
+}
+
 class FloatingActionBubble extends AnimatedWidget {
   const FloatingActionBubble({
     @required this.items,
@@ -61,6 +67,7 @@ class FloatingActionBubble extends AnimatedWidget {
     @required this.iconColor,
     @required this.backGroundColor,
     @required Animation animation,
+    this.herotag,
     this.iconData,
     this.animatedIconData,
   }) : assert((iconData == null && animatedIconData != null) || (iconData != null && animatedIconData == null)),
@@ -69,6 +76,7 @@ class FloatingActionBubble extends AnimatedWidget {
   final List<Bubble> items;
   final Function onPress;
   final AnimatedIconData animatedIconData;
+  final Object herotag;
   final IconData iconData;
   final Color iconColor;
   final Color backGroundColor;
@@ -115,6 +123,7 @@ class FloatingActionBubble extends AnimatedWidget {
           ),
         ),
         FloatingActionButton(
+          heroTag: herotag == null ? const _DefaultHeroTag() : herotag ,
           backgroundColor: backGroundColor,
           // iconData is mutually exclusive with animatedIconData
           // only 1 can be null at the time
