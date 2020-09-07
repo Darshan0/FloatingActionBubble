@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class Bubble {
   const Bubble(
       {@required this.title,
-        @required this.titleStyle,
-        @required this.iconColor,
-        @required this.bubbleColor,
-        @required this.icon,
-        @required this.onPress});
+      @required this.titleStyle,
+      @required this.iconColor,
+      @required this.bubbleColor,
+      @required this.icon,
+      @required this.onPress});
 
   final IconData icon;
   final Color iconColor;
@@ -37,10 +37,12 @@ class BubbleMenu extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Icon(
-            item.icon,
-            color: item.iconColor,
-          ),
+          item.icon != null
+              ? Icon(
+                  item.icon,
+                  color: item.iconColor,
+                )
+              : Container(),
           SizedBox(
             width: 10.0,
           ),
@@ -70,7 +72,8 @@ class FloatingActionBubble extends AnimatedWidget {
     this.herotag,
     this.iconData,
     this.animatedIconData,
-  }) : assert((iconData == null && animatedIconData != null) || (iconData != null && animatedIconData == null)),
+  })  : assert((iconData == null && animatedIconData != null) ||
+            (iconData != null && animatedIconData == null)),
         super(listenable: animation);
 
   final List<Bubble> items;
@@ -86,15 +89,23 @@ class FloatingActionBubble extends AnimatedWidget {
   Widget buildItem(BuildContext context, int index) {
     final screenWidth = MediaQuery.of(context).size.width;
 
+    TextDirection textDirection =
+        Directionality.of(context) ?? TextDirection.ltr;
+
+    double animationDirection = textDirection == TextDirection.ltr ? -1 : 1;
+
     final transform = Matrix4.translationValues(
-      -(screenWidth - _animation.value * screenWidth) *
+      animationDirection *
+          (screenWidth - _animation.value * screenWidth) *
           ((items.length - index) / 4),
       0.0,
       0.0,
     );
 
     return Align(
-      alignment: Alignment.centerRight,
+      alignment: textDirection == TextDirection.ltr
+          ? Alignment.centerRight
+          : Alignment.centerLeft,
       child: Transform(
         transform: transform,
         child: Opacity(
@@ -123,19 +134,19 @@ class FloatingActionBubble extends AnimatedWidget {
           ),
         ),
         FloatingActionButton(
-          heroTag: herotag == null ? const _DefaultHeroTag() : herotag ,
+          heroTag: herotag == null ? const _DefaultHeroTag() : herotag,
           backgroundColor: backGroundColor,
           // iconData is mutually exclusive with animatedIconData
           // only 1 can be null at the time
           child: iconData == null
               ? AnimatedIcon(
-            icon: animatedIconData,
-            progress: _animation,
-          )
+                  icon: animatedIconData,
+                  progress: _animation,
+                )
               : Icon(
-            iconData,
-            color: iconColor,
-          ),
+                  iconData,
+                  color: iconColor,
+                ),
           onPressed: onPress,
         ),
       ],
