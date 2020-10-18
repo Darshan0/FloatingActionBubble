@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Floating Action Bubble Demo'),
+      home: Directionality(textDirection: TextDirection.rtl, child: MyHomePage(title: 'Floating Action Bubble Demo')),
     );
   }
 }
@@ -41,6 +41,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     final curvedAnimation = CurvedAnimation(curve: Curves.easeInOut, parent: _animationController);
     _animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
     
+    
     super.initState();
 
 
@@ -48,12 +49,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       
       //Init Floating Action Bubble 
       floatingActionButton: FloatingActionBubble(

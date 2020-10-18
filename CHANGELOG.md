@@ -50,3 +50,8 @@
 
 * Support for both Icons and Animated Icons
 * Added Herotag 
+
+## [1.1.2] - 18/10/2020
+
+* Support for both Icons and Animated Icons
+* Added Herotag 

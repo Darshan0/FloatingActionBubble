@@ -15,12 +15,33 @@ Just add `floating_action_bubble` to your [pubspec.yml](https://flutter.io/using
 
 ```yml
 dependencies:
-  floating_action_bubble: 1.0.9
+  floating_action_bubble: 1.1.2
 ```
 
 ## Example
 
 ```dart
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Floating Action Bubble Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Directionality(textDirection: TextDirection.rtl, child: MyHomePage(title: 'Floating Action Bubble Demo')),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
 class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin{
 
   Animation<double> _animation;
@@ -37,6 +58,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     final curvedAnimation = CurvedAnimation(curve: Curves.easeInOut, parent: _animationController);
     _animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
     
+    
     super.initState();
 
 
@@ -44,12 +66,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       
       //Init Floating Action Bubble 
       floatingActionButton: FloatingActionBubble(
@@ -86,6 +108,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             icon:Icons.home,
             titleStyle:TextStyle(fontSize: 16 , color: Colors.white),
             onPress: () {
+              Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => Homepage()));
               _animationController.reverse();
             },
           ),
@@ -95,15 +118,16 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         animation: _animation,
 
         // On pressed change animation state
-        onPress: _animationController.isCompleted
-            ? _animationController.reverse
-            : _animationController.forward,
+        onPress: () => _animationController.isCompleted
+              ? _animationController.reverse()
+              : _animationController.forward(),
         
         // Floating Action button Icon color
         iconColor: Colors.blue,
 
         // Flaoting Action button Icon 
-        icon: AnimatedIcons.add_event,
+        iconData: Icons.ac_unit, 
+        backGroundColor: Colors.white,
       )
     );
   }
@@ -132,4 +156,4 @@ You can customize the widget appareance using the following properties:
 
 ## Contributing
 
-If you want to contribute to this project, please submit a PR 😁
+If you want to contribute to this project, please submit a PR to the development branch Thank you 😁
