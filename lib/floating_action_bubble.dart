@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 
 class Bubble {
   const Bubble(
-      {@required this.title,
-      @required this.titleStyle,
-      @required this.iconColor,
-      @required this.bubbleColor,
-      @required this.icon,
-      @required this.onPress});
+      {required this.title,
+      required this.titleStyle,
+      required this.iconColor,
+      required this.bubbleColor,
+      required this.icon,
+      required this.onPress});
 
   final IconData icon;
   final Color iconColor;
   final Color bubbleColor;
-  final Function onPress;
+  final VoidCallback onPress;
   final String title;
   final TextStyle titleStyle;
 }
 
 class BubbleMenu extends StatelessWidget {
-  const BubbleMenu(this.item, {Key key}) : super(key: key);
+  const BubbleMenu(this.item, {Key? key}) : super(key: key);
 
   final Bubble item;
 
@@ -64,11 +64,11 @@ class _DefaultHeroTag {
 
 class FloatingActionBubble extends AnimatedWidget {
   const FloatingActionBubble({
-    @required this.items,
-    @required this.onPress,
-    @required this.iconColor,
-    @required this.backGroundColor,
-    @required Animation animation,
+    required this.items,
+    required this.onPress,
+    required this.iconColor,
+    required this.backGroundColor,
+    required Animation animation,
     this.herotag,
     this.iconData,
     this.animatedIconData,
@@ -77,10 +77,10 @@ class FloatingActionBubble extends AnimatedWidget {
         super(listenable: animation);
 
   final List<Bubble> items;
-  final Function onPress;
-  final AnimatedIconData animatedIconData;
-  final Object herotag;
-  final IconData iconData;
+  final VoidCallback onPress;
+  final AnimatedIconData? animatedIconData;
+  final Object? herotag;
+  final IconData? iconData;
   final Color iconColor;
   final Color backGroundColor;
 
@@ -89,8 +89,7 @@ class FloatingActionBubble extends AnimatedWidget {
   Widget buildItem(BuildContext context, int index) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    TextDirection textDirection =
-        Directionality.of(context) ?? TextDirection.ltr;
+    TextDirection textDirection = Directionality.of(context);
 
     double animationDirection = textDirection == TextDirection.ltr ? -1 : 1;
 
@@ -138,9 +137,9 @@ class FloatingActionBubble extends AnimatedWidget {
           backgroundColor: backGroundColor,
           // iconData is mutually exclusive with animatedIconData
           // only 1 can be null at the time
-          child: iconData == null
+          child: iconData == null && animatedIconData != null
               ? AnimatedIcon(
-                  icon: animatedIconData,
+                  icon: animatedIconData!,
                   progress: _animation,
                 )
               : Icon(

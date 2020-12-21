@@ -14,8 +14,8 @@ class Homepage extends StatefulWidget{
 class HomepageState extends State<Homepage> with SingleTickerProviderStateMixin{
 
 
-    Animation<double> _animation;
-  AnimationController _animationController;
+  late Animation<double> _animation;
+  late AnimationController _animationController;
 
   @override
   void initState(){
