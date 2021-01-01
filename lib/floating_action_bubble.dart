@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 
 class Bubble {
-  const Bubble(
-      {required this.title,
-      required this.titleStyle,
-      required this.iconColor,
-      required this.bubbleColor,
-      required this.icon,
-      required this.onPress});
+  const Bubble({
+    required this.title,
+    required this.onPress,
+    this.titleStyle,
+    this.iconColor,
+    this.bubbleColor,
+    this.icon,
+  });
 
-  final IconData icon;
-  final Color iconColor;
-  final Color bubbleColor;
+  final IconData? icon;
+  final Color? iconColor;
+  final Color? bubbleColor;
   final VoidCallback onPress;
   final String title;
-  final TextStyle titleStyle;
+  final TextStyle? titleStyle;
 }
 
 class BubbleMenu extends StatelessWidget {
@@ -58,6 +59,7 @@ class BubbleMenu extends StatelessWidget {
 
 class _DefaultHeroTag {
   const _DefaultHeroTag();
+
   @override
   String toString() => '<default FloatingActionBubble tag>';
 }
@@ -66,9 +68,9 @@ class FloatingActionBubble extends AnimatedWidget {
   const FloatingActionBubble({
     required this.items,
     required this.onPress,
-    required this.iconColor,
-    required this.backGroundColor,
     required Animation animation,
+    this.iconColor,
+    this.backGroundColor,
     this.herotag,
     this.iconData,
     this.animatedIconData,
@@ -81,8 +83,8 @@ class FloatingActionBubble extends AnimatedWidget {
   final AnimatedIconData? animatedIconData;
   final Object? herotag;
   final IconData? iconData;
-  final Color iconColor;
-  final Color backGroundColor;
+  final Color? iconColor;
+  final Color? backGroundColor;
 
   get _animation => listenable;
 
