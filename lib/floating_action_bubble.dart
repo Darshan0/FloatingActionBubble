@@ -26,8 +26,8 @@ class BubbleMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      shape: StadiumBorder(),
-      padding: EdgeInsets.only(top: 11, bottom: 13, left: 32, right: 32),
+      shape: const StadiumBorder(),
+      padding: const EdgeInsets.only(top: 11, bottom: 13, left: 32, right: 32),
       color: item.bubbleColor,
       splashColor: Colors.grey.withOpacity(0.1),
       highlightColor: Colors.grey.withOpacity(0.1),
@@ -40,11 +40,11 @@ class BubbleMenu extends StatelessWidget {
         children: <Widget>[
           item.icon != null
               ? Icon(
-                  item.icon,
-                  color: item.iconColor,
-                )
+            item.icon,
+            color: item.iconColor,
+          )
               : Container(),
-          SizedBox(
+          const SizedBox(
             width: 10.0,
           ),
           Text(
@@ -75,7 +75,7 @@ class FloatingActionBubble extends AnimatedWidget {
     this.iconData,
     this.animatedIconData,
   })  : assert((iconData == null && animatedIconData != null) ||
-            (iconData != null && animatedIconData == null)),
+      (iconData != null && animatedIconData == null)),
         super(listenable: animation);
 
   final List<Bubble> items;
@@ -91,9 +91,9 @@ class FloatingActionBubble extends AnimatedWidget {
   Widget buildItem(BuildContext context, int index) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    TextDirection textDirection = Directionality.of(context);
+    final textDirection = Directionality.of(context);
 
-    double animationDirection = textDirection == TextDirection.ltr ? -1 : 1;
+    final animationDirection = textDirection == TextDirection.ltr ? -1 : 1;
 
     final transform = Matrix4.translationValues(
       animationDirection *
@@ -127,27 +127,27 @@ class FloatingActionBubble extends AnimatedWidget {
           ignoring: _animation.value == 0,
           child: ListView.separated(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            separatorBuilder: (_, __) => SizedBox(height: 12.0),
-            padding: EdgeInsets.symmetric(vertical: 12),
+            physics: const NeverScrollableScrollPhysics(),
+            separatorBuilder: (_, __) => const SizedBox(height: 12.0),
+            padding: const EdgeInsets.symmetric(vertical: 12),
             itemCount: items.length,
             itemBuilder: buildItem,
           ),
         ),
         FloatingActionButton(
-          heroTag: herotag == null ? const _DefaultHeroTag() : herotag,
+          heroTag: herotag ?? const _DefaultHeroTag(),
           backgroundColor: backGroundColor,
           // iconData is mutually exclusive with animatedIconData
           // only 1 can be null at the time
           child: iconData == null && animatedIconData != null
               ? AnimatedIcon(
-                  icon: animatedIconData!,
-                  progress: _animation,
-                )
+            icon: animatedIconData!,
+            progress: _animation,
+          )
               : Icon(
-                  iconData,
-                  color: iconColor,
-                ),
+            iconData,
+            color: iconColor,
+          ),
           onPressed: onPress,
         ),
       ],
