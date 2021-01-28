@@ -25,15 +25,13 @@ class BubbleMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      shape: const StadiumBorder(),
-      padding: const EdgeInsets.only(top: 11, bottom: 13, left: 32, right: 32),
-      color: item.bubbleColor,
-      splashColor: Colors.grey.withOpacity(0.1),
-      highlightColor: Colors.grey.withOpacity(0.1),
-      elevation: 2,
-      highlightElevation: 2,
-      disabledColor: item.bubbleColor,
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+          shape: const StadiumBorder(),
+          padding:
+          const EdgeInsets.only(top: 11, bottom: 13, left: 32, right: 32),
+          elevation: 2,
+          primary: item.bubbleColor),
       onPressed: item.onPress,
       child: Row(
         mainAxisSize: MainAxisSize.min,
