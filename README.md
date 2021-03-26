@@ -135,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
 }
 ```
 
-You can check for a more complete example in the [example](https://github.com/Darshan0/floating_action_bubble/master/example) directory.
+You can check for a more complete example in the [example](https://github.com/Darshan0/FloatingActionBubble/tree/master/example) directory.
 
 ## Customize
 
