@@ -142,6 +142,7 @@ class FloatingActionBubble extends AnimatedWidget {
               ? AnimatedIcon(
                   icon: animatedIconData,
                   progress: _animation,
+                  color: iconColor,
                 )
               : Icon(
                   iconData,
