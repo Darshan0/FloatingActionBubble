@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class Bubble {
   const Bubble(
-      {@required this.title,
-      @required this.titleStyle,
-      @required this.iconColor,
-      @required this.bubbleColor,
-      @required this.icon,
-      @required this.onPress});
+      {required this.title,
+      required this.titleStyle,
+      required this.iconColor,
+      required this.bubbleColor,
+      required this.icon,
+      required this.onPress});
 
   final IconData icon;
   final Color iconColor;
@@ -18,7 +18,7 @@ class Bubble {
 }
 
 class BubbleMenu extends StatelessWidget {
-  const BubbleMenu(this.item, {Key key}) : super(key: key);
+  const BubbleMenu(this.item, {Key? key}) : super(key: key);
 
   final Bubble item;
 
@@ -33,16 +33,14 @@ class BubbleMenu extends StatelessWidget {
       elevation: 2,
       highlightElevation: 2,
       disabledColor: item.bubbleColor,
-      onPressed: item.onPress,
+      onPressed: item.onPress(),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          item.icon != null
-              ? Icon(
-                  item.icon,
-                  color: item.iconColor,
-                )
-              : Container(),
+          Icon(
+            item.icon,
+            color: item.iconColor,
+          ),
           SizedBox(
             width: 10.0,
           ),
@@ -64,11 +62,11 @@ class _DefaultHeroTag {
 
 class FloatingActionBubble extends AnimatedWidget {
   const FloatingActionBubble({
-    @required this.items,
-    @required this.onPress,
-    @required this.iconColor,
-    @required this.backGroundColor,
-    @required Animation animation,
+    required this.items,
+    required this.onPress,
+    required this.iconColor,
+    required this.backGroundColor,
+    required Animation animation,
     this.herotag,
     this.iconData,
     this.animatedIconData,
@@ -78,9 +76,9 @@ class FloatingActionBubble extends AnimatedWidget {
 
   final List<Bubble> items;
   final Function onPress;
-  final AnimatedIconData animatedIconData;
-  final Object herotag;
-  final IconData iconData;
+  final AnimatedIconData? animatedIconData;
+  final Object? herotag;
+  final IconData? iconData;
   final Color iconColor;
   final Color backGroundColor;
 
@@ -89,8 +87,7 @@ class FloatingActionBubble extends AnimatedWidget {
   Widget buildItem(BuildContext context, int index) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    TextDirection textDirection =
-        Directionality.of(context) ?? TextDirection.ltr;
+    TextDirection textDirection = Directionality.of(context);
 
     double animationDirection = textDirection == TextDirection.ltr ? -1 : 1;
 
@@ -103,9 +100,7 @@ class FloatingActionBubble extends AnimatedWidget {
     );
 
     return Align(
-      alignment: textDirection == TextDirection.ltr
-          ? Alignment.centerRight
-          : Alignment.centerLeft,
+      alignment: textDirection == TextDirection.ltr ? Alignment.centerRight : Alignment.centerLeft,
       child: Transform(
         transform: transform,
         child: Opacity(
@@ -140,7 +135,7 @@ class FloatingActionBubble extends AnimatedWidget {
           // only 1 can be null at the time
           child: iconData == null
               ? AnimatedIcon(
-                  icon: animatedIconData,
+                  icon: animatedIconData!,
                   progress: _animation,
                   color: iconColor,
                 )
@@ -148,7 +143,7 @@ class FloatingActionBubble extends AnimatedWidget {
                   iconData,
                   color: iconColor,
                 ),
-          onPressed: onPress,
+          onPressed: onPress(),
         ),
       ],
     );
