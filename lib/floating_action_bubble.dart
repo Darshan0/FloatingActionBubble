@@ -12,7 +12,7 @@ class Bubble {
   final IconData icon;
   final Color iconColor;
   final Color bubbleColor;
-  final Function onPress;
+  final Function() onPress;
   final String title;
   final TextStyle titleStyle;
 }
@@ -33,7 +33,7 @@ class BubbleMenu extends StatelessWidget {
       elevation: 2,
       highlightElevation: 2,
       disabledColor: item.bubbleColor,
-      onPressed: item.onPress(),
+      onPressed: item.onPress,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -75,7 +75,7 @@ class FloatingActionBubble extends AnimatedWidget {
         super(listenable: animation);
 
   final List<Bubble> items;
-  final Function onPress;
+  final Function() onPress;
   final AnimatedIconData? animatedIconData;
   final Object? herotag;
   final IconData? iconData;
@@ -143,7 +143,7 @@ class FloatingActionBubble extends AnimatedWidget {
                   iconData,
                   color: iconColor,
                 ),
-          onPressed: onPress(),
+          onPressed: onPress,
         ),
       ],
     );

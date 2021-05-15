@@ -3,13 +3,28 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="69c6123b-0f5a-4fc1-8e4d-34fcaffb9123" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/floating_action_bubble.iml" beforeDir="false" afterPath="$PROJECT_DIR$/floating_action_bubble.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/floating_action_bubble.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/floating_action_bubble.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +61,35 @@
       <option name="presentableId" value="Default" />
       <updated>1621038072639</updated>
     </task>
+    <task id="LOCAL-00001" summary="migrate to null safety">
+      <created>1621038351384</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1621038351384</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="migrate to null safety" />
+    <option name="LAST_COMMIT_MESSAGE" value="migrate to null safety" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2321" y="282" key="Vcs.Push.Dialog.v2" timestamp="1621038353366">
+      <screen x="1680" y="25" width="1920" height="1055" />
+    </state>
+    <state x="2321" y="282" key="Vcs.Push.Dialog.v2/1680.25.1920.1055/-1920.25.1920.1055/0.25.1680.940@1680.25.1920.1055" timestamp="1621038353366" />
   </component>
 </project>
