@@ -72,6 +72,7 @@ class FloatingActionBubble extends AnimatedWidget {
     this.herotag,
     this.iconData,
     this.animatedIconData,
+    this.mini,
   })  : assert((iconData == null && animatedIconData != null) ||
       (iconData != null && animatedIconData == null)),
         super(listenable: animation);
@@ -83,6 +84,7 @@ class FloatingActionBubble extends AnimatedWidget {
   final IconData? iconData;
   final Color? iconColor;
   final Color? backGroundColor;
+  final bool? mini;
 
   get _animation => listenable;
 
@@ -147,6 +149,7 @@ class FloatingActionBubble extends AnimatedWidget {
             color: iconColor,
           ),
           onPressed: onPress,
+          mini: mini ?? false,
         ),
       ],
     );
