@@ -2,31 +2,31 @@ import 'package:flutter/material.dart';
 
 class Bubble {
   const Bubble(
-      {@required this.title,
-      @required this.titleStyle,
-      @required this.iconColor,
-      @required this.bubbleColor,
-      @required this.icon,
-      @required this.onPress});
+      {required this.title,
+      required this.titleStyle,
+      required this.iconColor,
+      required this.bubbleColor,
+      required this.icon,
+      required this.onPress});
 
   final IconData icon;
   final Color iconColor;
   final Color bubbleColor;
-  final Function onPress;
+  final void Function() onPress;
   final String title;
   final TextStyle titleStyle;
 }
 
 class BubbleMenu extends StatelessWidget {
-  const BubbleMenu(this.item, {Key key}) : super(key: key);
+  const BubbleMenu(this.item, {Key? key}) : super(key: key);
 
   final Bubble item;
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      shape: StadiumBorder(),
-      padding: EdgeInsets.only(top: 11, bottom: 13, left: 32, right: 32),
+      shape: const StadiumBorder(),
+      padding: const EdgeInsets.only(top: 11, bottom: 13, left: 32, right: 32),
       color: item.bubbleColor,
       splashColor: Colors.grey.withOpacity(0.1),
       highlightColor: Colors.grey.withOpacity(0.1),
@@ -37,13 +37,11 @@ class BubbleMenu extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          item.icon != null
-              ? Icon(
-                  item.icon,
-                  color: item.iconColor,
-                )
-              : Container(),
-          SizedBox(
+          Icon(
+            item.icon,
+            color: item.iconColor,
+          ),
+          const SizedBox(
             width: 10.0,
           ),
           Text(
@@ -64,23 +62,24 @@ class _DefaultHeroTag {
 
 class FloatingActionBubble extends AnimatedWidget {
   const FloatingActionBubble({
-    @required this.items,
-    @required this.onPress,
-    @required this.iconColor,
-    @required this.backGroundColor,
-    @required Animation animation,
+    Key? key,
+    required this.items,
+    required this.onPress,
+    required this.iconColor,
+    required this.backGroundColor,
+    required Animation animation,
     this.herotag,
     this.iconData,
     this.animatedIconData,
   })  : assert((iconData == null && animatedIconData != null) ||
             (iconData != null && animatedIconData == null)),
-        super(listenable: animation);
+        super(listenable: animation, key: key);
 
   final List<Bubble> items;
-  final Function onPress;
-  final AnimatedIconData animatedIconData;
-  final Object herotag;
-  final IconData iconData;
+  final void Function() onPress;
+  final AnimatedIconData? animatedIconData;
+  final Object? herotag;
+  final IconData? iconData;
   final Color iconColor;
   final Color backGroundColor;
 
@@ -89,8 +88,7 @@ class FloatingActionBubble extends AnimatedWidget {
   Widget buildItem(BuildContext context, int index) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    TextDirection textDirection =
-        Directionality.of(context) ?? TextDirection.ltr;
+    TextDirection textDirection = Directionality.of(context);
 
     double animationDirection = textDirection == TextDirection.ltr ? -1 : 1;
 
@@ -126,21 +124,21 @@ class FloatingActionBubble extends AnimatedWidget {
           ignoring: _animation.value == 0,
           child: ListView.separated(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            separatorBuilder: (_, __) => SizedBox(height: 12.0),
-            padding: EdgeInsets.symmetric(vertical: 12),
+            physics: const NeverScrollableScrollPhysics(),
+            separatorBuilder: (_, __) => const SizedBox(height: 12.0),
+            padding: const EdgeInsets.symmetric(vertical: 12),
             itemCount: items.length,
             itemBuilder: buildItem,
           ),
         ),
         FloatingActionButton(
-          heroTag: herotag == null ? const _DefaultHeroTag() : herotag,
+          heroTag: herotag ?? const _DefaultHeroTag(),
           backgroundColor: backGroundColor,
           // iconData is mutually exclusive with animatedIconData
           // only 1 can be null at the time
           child: iconData == null
               ? AnimatedIcon(
-                  icon: animatedIconData,
+                  icon: animatedIconData!,
                   progress: _animation,
                   color: iconColor,
                 )
