@@ -1,10 +1,10 @@
 name: floating_action_bubble
-description: A animated menu using a floating action button , the aesthetic of the menu items are fully customisable 
+description: A animated menu using a floating action button , the aesthetic of the menu items are fully customisable
 version: 1.1.2
 homepage: https://github.com/Darshan0/floating_action_bubble
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -13,6 +13,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^1.0.0
 
 
 flutter:
