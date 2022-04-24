@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Bubble {
-  const Bubble(
-      {required this.title,
-      required this.titleStyle,
-      required this.iconColor,
-      required this.bubbleColor,
-      required this.icon,
-      required this.onPress});
+  const Bubble({
+    required this.title,
+    required this.titleStyle,
+    required this.iconColor,
+    required this.bubbleColor,
+    required this.icon,
+    required this.onPress,
+  });
 
   final IconData icon;
   final Color iconColor;
@@ -68,7 +69,7 @@ class FloatingActionBubble extends AnimatedWidget {
     required this.iconColor,
     required this.backGroundColor,
     required Animation animation,
-    this.herotag,
+    this.heroTag,
     this.iconData,
     this.animatedIconData,
   })  : assert((iconData == null && animatedIconData != null) ||
@@ -78,7 +79,7 @@ class FloatingActionBubble extends AnimatedWidget {
   final List<Bubble> items;
   final void Function() onPress;
   final AnimatedIconData? animatedIconData;
-  final Object? herotag;
+  final Object? heroTag;
   final IconData? iconData;
   final Color iconColor;
   final Color backGroundColor;
@@ -132,7 +133,7 @@ class FloatingActionBubble extends AnimatedWidget {
           ),
         ),
         FloatingActionButton(
-          heroTag: herotag ?? const _DefaultHeroTag(),
+          heroTag: heroTag ?? const _DefaultHeroTag(),
           backgroundColor: backGroundColor,
           // iconData is mutually exclusive with animatedIconData
           // only 1 can be null at the time
