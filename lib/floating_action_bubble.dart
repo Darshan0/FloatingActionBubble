@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Bubble {
-  const Bubble({
-    required this.title,
-    required this.titleStyle,
-    required this.iconColor,
-    required this.bubbleColor,
-    required this.icon,
-    required this.onPress,
-  });
+  const Bubble(
+      {required this.title,
+      required this.titleStyle,
+      required this.iconColor,
+      required this.bubbleColor,
+      required this.icon,
+      required this.onPress,
+      required this.buttonWidth});
 
   final IconData icon;
   final Color iconColor;
@@ -16,6 +16,7 @@ class Bubble {
   final void Function() onPress;
   final String title;
   final TextStyle titleStyle;
+  final double buttonWidth;
 }
 
 class BubbleMenu extends StatelessWidget {
@@ -35,21 +36,25 @@ class BubbleMenu extends StatelessWidget {
       highlightElevation: 2,
       disabledColor: item.bubbleColor,
       onPressed: item.onPress,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Icon(
-            item.icon,
-            color: item.iconColor,
-          ),
-          const SizedBox(
-            width: 10.0,
-          ),
-          Text(
-            item.title,
-            style: item.titleStyle,
-          ),
-        ],
+      child: SizedBox(
+        width: item.buttonWidth,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              item.icon,
+              color: item.iconColor,
+            ),
+            const SizedBox(
+              width: 10.0,
+            ),
+            Text(
+              item.title,
+              style: item.titleStyle,
+            ),
+          ],
+        ),
       ),
     );
   }
